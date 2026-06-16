@@ -1,0 +1,42 @@
+# ROBOTS.TXT for JUSTDOWOW Website
+# Place this file at the root of your domain: https://justdowow.com/robots.txt
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /about
+Allow: /digital-marketing-agency-delhi
+Allow: /digital-marketing-agency-noida
+Allow: /digital-marketing-agency-tronica-city
+
+# Disallow crawler access to private areas (update as needed)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /uploads/private/
+
+# Allow specific crawlers for analytics and indexing
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Facebook and social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Site map reference
+Sitemap: https://justdowow.com/sitemap.xml
+Sitemap: https://justdowow.com/sitemap-blog.xml
+
+# Crawl delay for other crawlers
+User-agent: *
+Crawl-delay: 1
+Request-rate: 30/60
