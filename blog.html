@@ -196,7 +196,77 @@ const blogPosts = [
     featured: true
   }
   */
+  }
 ];
+  /*
+  {
+    id: 1,
+    title: "The Complete Guide to SEO in 2025",
+    excerpt: "Learn the latest SEO best practices and strategies...",
+    category: "seo",
+    date: "March 15, 2025",
+    author: "JUSTDOWOW Team",
+    slug: "complete-guide-seo-2025",
+    featured: true
+  }
+  */
+];
+
+// Render blog cards
+function renderBlogs(posts) {
+  const grid = document.getElementById('blogGrid');
+  if (posts.length === 0) {
+    grid.innerHTML = '<div class="no-posts" style="grid-column:1/-1;"><h3>No blog posts yet</h3><p>Check back soon for expert insights on digital marketing.</p></div>';
+    return;
+  }
+  grid.innerHTML = posts.map(post => `
+    <article class="blog-card">
+      <div class="blog-card-image">📄</div>
+      <div class="blog-card-content">
+        <span class="blog-card-category">${post.category}</span>
+        <h3 class="blog-card-title">${post.title}</h3>
+        <p class="blog-card-excerpt">${post.excerpt}</p>
+        <div class="blog-card-meta">
+          <span>${post.date}</span>
+          <span>${post.author}</span>
+        </div>
+        <a href="/${post.slug}" class="blog-card-link">Read More →</a>
+      </div>
+    </article>
+  `).join('');
+}
+
+// Filter blogs by category
+function filterBlogs(category) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  if (category === 'all') {
+    renderBlogs(blogPosts);
+  } else {
+    const filtered = blogPosts.filter(post => post.category === category);
+    renderBlogs(filtered);
+  }
+}
+
+// Search blogs
+function searchBlogs() {
+  const query = document.getElementById('blogSearch').value.toLowerCase();
+  const filtered = blogPosts.filter(post => 
+    post.title.toLowerCase().includes(query) || 
+    post.excerpt.toLowerCase().includes(query)
+  );
+  renderBlogs(filtered);
+}
+
+// Initial render
+renderBlogs(blogPosts);
+
+// Mobile menu toggle
+const ham=document.getElementById('hamburger');ham?.addEventListener('click',()=>{console.log('Mobile menu toggle');});
+</script>
+</body>
+</html>
 
 // Render blog cards
 function renderBlogs(posts) {
